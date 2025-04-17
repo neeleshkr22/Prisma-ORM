@@ -9,6 +9,30 @@ async function insertUser(username:string,password:string, firstName:string, las
             password,
             firstName,
             lastName
+        },
+        select:{
+            id:true,
+            firstName:true,
+            password:true
         }
+    })
+    console.log(res)
+}
+insertUser("neeleshrana22@gmail.com","password","Neelesh","Rana")
+
+interface UpdateParams{
+    firstName: string,
+    lastName:string
+}
+
+async function updateUser(username: string, {firstName,lastName}:UpdateParams){
+    const res =  await prisma.user.update({
+       where:{
+         email : username,
+       },
+       data:{
+        firstName,
+        lastName,
+       }
     })
 }
