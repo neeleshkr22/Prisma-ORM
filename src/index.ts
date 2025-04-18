@@ -36,3 +36,18 @@ async function updateUser(username: string, {firstName,lastName}:UpdateParams){
        }
     })
 }
+updateUser('neeleshrana22@gmail,com',{
+    firstName: "Neelesh",
+    lastName:"Kumar"
+})
+
+
+async function getUser(username:string){
+    const res = await prisma.user.findFirst({
+        where:{
+            email:username
+        },
+    })
+    console.log(res)
+}
+getUser("neeleshrana22@gmail.com")
